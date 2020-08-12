@@ -1,0 +1,30 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+**/node_modules
+
+# production
+**/build
+**/config/production.json
+*.env.production
+*.env.prod
+*.env
+
+# VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# System Files
+._*
+.DS_Store
+.DS_Store?
+.Trashes
+Thumbs.db
+
+# Logs
+**/logs
+*.log*
