@@ -19,7 +19,15 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'stylelint-custom-processor-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: ['styled-components'],
+            },
+          },
+          'stylelint-custom-processor-loader',
+        ],
       },
       {
         test: /\.html$/,
