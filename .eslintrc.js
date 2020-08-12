@@ -4,28 +4,28 @@ module.exports = {
     es2020: true,
   },
   extends: [
-    "airbnb",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
+    'airbnb',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
   ],
   globals: {
-    config: "readonly",
+    config: 'readonly',
   },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 11,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
-    "react/jsx-props-no-spreading": "off",
-    "react/destructuring-assignment": "off",
-    "react/jsx-filename-extension": [1, { extensions: [".js"] }],
+    'react/jsx-props-no-spreading': 'off',
+    'react/destructuring-assignment': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
   },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       node: {},
       webpack: {},
     },

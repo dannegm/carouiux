@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <PageWrapper>
       <Image src={imgHeader} alt="" />
-      <Title>Hola!</Title>
+      <Title>Carolina Guzman</Title>
       <Typewriter
         options={{
           strings: ['User Experience Designer', 'User Interface Designer'],

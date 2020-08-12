@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const PageWrapper = styled.div`
-  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;

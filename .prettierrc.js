@@ -7,5 +7,5 @@ module.exports = {
   jsxSingleQuote: false,
   bracketSpacing: true,
   jsxBracketSameLine: false,
-  arrowParens: "always",
+  arrowParens: 'always',
 };
