@@ -11,7 +11,7 @@ const PageWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  height: 40%;
+  height: 25%;
   margin: 1rem;
 `;
 
