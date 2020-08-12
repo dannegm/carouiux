@@ -1,9 +1,9 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
 
-import { PageWrapper, Image, Title } from './Home.styled';
-
 import imgHeader from '@/assets/images/img_header.png';
+
+import { PageWrapper, Image, Title } from './Home.styled';
 
 const Home = () => {
   return (
