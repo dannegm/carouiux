@@ -1,0 +1,23 @@
+[
+  {
+    "id": "project.centira_healthcare",
+    "title": "Centria Healthcare",
+    "description": "A scheduling app that helps to visualize the availability of rooms and items within the healthcare center.",
+    "callToActionLabel": "View case study",
+    "cover": "https://firebasestorage.googleapis.com/v0/b/carouiux.appspot.com/o/projects%2Fcover_centria.png?alt=media&token=3cdfd032-7822-432e-a51c-018b402a7bfd"
+  },
+  {
+    "id": "project.equipment_finder",
+    "title": "Equipment finder",
+    "description": "Responsive web application, which allows the users to visualize information about industrial equipment, and book it . Designed with react  library patterns.",
+    "callToActionLabel": "View case study",
+    "cover": "https://firebasestorage.googleapis.com/v0/b/carouiux.appspot.com/o/projects%2Fcover_equipmentfinder.png?alt=media&token=18c66bb3-3f1b-44f7-a19c-7ab2a8997252"
+  },
+  {
+    "id": "project.givvy_branding",
+    "title": "Givvy Branding",
+    "description": "Development of branding identity thinking about its adaptation to mobile phones, as well as creation of a design system applied to the different devices related to the brand.",
+    "callToActionLabel": "View case study",
+    "cover": "https://firebasestorage.googleapis.com/v0/b/carouiux.appspot.com/o/projects%2Fcover_givvy.png?alt=media&token=45c80bb4-5234-4ba6-9dbe-df9eeb420535"
+  }
+]
