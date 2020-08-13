@@ -16,6 +16,8 @@
     "prettier:fix": "npm run prettier -- --write"
   },
   "dependencies": {
+    "@bootstrap-styled/provider": "^2.0.2",
+    "@bootstrap-styled/v4": "^3.4.0",
     "polished": "^3.6.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -50,8 +52,6 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
-    "resolve-url-loader": "^3.1.1",
-    "style-loader": "^1.2.1",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-config-styled-components": "^0.1.1",

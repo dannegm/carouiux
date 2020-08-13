@@ -2,16 +2,16 @@ import React from 'react';
 import Typewriter from 'typewriter-effect';
 
 import imgHeader from '@/assets/images/img_header.png';
-import Navbar from '../../components/Navbar/Navbar';
-import Skills from '../../components/Skills/Skills';
-import Projects from '../../components/Projects/Projects';
+import NavigationBar from '@/components/NavigationBar';
+import Skills from '@/components/Skills';
+import Projects from '@/components/Projects';
 
 import { PageWrapper, Image, Title } from './Home.styled';
 
 const Home = () => {
   return (
     <>
-      <Navbar/>
+      <NavigationBar />
       <PageWrapper>
         <Image src={imgHeader} alt="" />
         <Title>I'm Carolina</Title>

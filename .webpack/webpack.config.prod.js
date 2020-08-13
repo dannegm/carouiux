@@ -94,7 +94,7 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.css'],
     alias: {
       '@': path.join(__dirname, './../src/'),
     },

@@ -18,7 +18,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: 'style-loader!css-loader',
       },
       {
         test: /\.js$/,
@@ -77,7 +77,7 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.css'],
     alias: {
       '@': path.join(__dirname, './../src/'),
     },

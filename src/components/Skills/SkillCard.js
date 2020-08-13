@@ -1,20 +1,40 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBlock,
+  CardImg,
+  CardTitle,
+  CardText,
+} from '@bootstrap-styled/v4';
 
-export default function SkillCard (props) {
-    const { cardImage, cardTitle, cardText } = props;
+const SkillCard = (props) => {
+  const { image, title, text } = props;
 
-    return (
-        <div className="col-12 col-md-6 col-lg-4 text-justify">
-            <Card style={{ width: '18rem'}}>
-                <Card.Img variant="top" src={cardImage}/>
-                <Card.Body>
-                    <Card.Title>{ cardTitle }</Card.Title>
-                    <Card.Text>
-                        { cardText }
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-        </div>
-    )
-}
+  return (
+    <Container>
+      <Row>
+        <Col xs={12} md={6} lg={4} className="text-justify">
+          <Card style={{ width: '18rem' }}>
+            <CardImg variant="top" src={image} />
+            <CardBlock>
+              <CardTitle>{title}</CardTitle>
+              <CardText>{text}</CardText>
+            </CardBlock>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+SkillCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+export default SkillCard;
