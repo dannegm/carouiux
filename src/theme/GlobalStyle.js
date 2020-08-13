@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     box-sizing: border-box;
+    font-size: 14px;
   }
 
   *,
@@ -23,7 +24,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Bw Nista Geometric DEMO', Helvetica, Arial, sans-serif;
-    font-size: 16px;
   }
 
   a {

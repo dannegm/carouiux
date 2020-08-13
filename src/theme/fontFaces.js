@@ -14,7 +14,6 @@ const BwNistaGeometricDEMORgular = css`
       url('${BwNistaGeometricDEMORegularWoff}') format('woff');
     font-weight: normal;
     font-style: normal;
-    font-display: fallback;
   }
 `;
 
@@ -26,7 +25,6 @@ const BwNistaGeometricDEMOExtraBold = css`
       url('${BwNistaGeometricDEMOExtraBoldWoff}') format('woff');
     font-weight: bold;
     font-style: normal;
-    font-display: fallback;
   }
 `;
 

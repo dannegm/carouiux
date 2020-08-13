@@ -1,33 +1,18 @@
 import React from 'react';
-import Typewriter from 'typewriter-effect';
+import Navbar from '@/components/layout/Navbar';
 
-import imgHeader from '@/assets/images/img_header.png';
-import NavigationBar from '@/components/NavigationBar';
-import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
+import Hero from './components/Hero';
+import Skills from './components/Skills';
 
-import { PageWrapper, Image, Title } from './Home.styled';
+import { PageWrapper } from './Home.styled';
 
 const Home = () => {
   return (
-    <>
-      <NavigationBar />
-      <PageWrapper>
-        <Image src={imgHeader} alt="" />
-        <Title>I'm Carolina</Title>
-        <Typewriter
-          options={{
-            strings: ['User Experience Designer', 'User Interface Designer'],
-            autoStart: true,
-            delay: 50,
-            deleteSpeed: 10,
-            loop: true,
-          }}
-        />
-      </PageWrapper>
+    <PageWrapper>
+      <Navbar />
+      <Hero />
       <Skills />
-      <Projects />
-    </>
+    </PageWrapper>
   );
 };
 
