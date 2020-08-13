@@ -43,6 +43,8 @@ const Skills = () => {
             LinkedIn or get in touch to view my CV.
           </h5>
         </Col>
+      </Row>
+      <Row>
         {cardList.map((cardData) => (
           <SkillCard
             key={cardData.cardTitle}

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Container,
-  Row,
   Col,
   Card,
   CardBlock,
@@ -15,19 +13,15 @@ const SkillCard = (props) => {
   const { image, title, text } = props;
 
   return (
-    <Container>
-      <Row>
-        <Col xs={12} md={6} lg={4} className="text-justify">
-          <Card style={{ width: '18rem' }}>
-            <CardImg variant="top" src={image} />
-            <CardBlock>
-              <CardTitle>{title}</CardTitle>
-              <CardText>{text}</CardText>
-            </CardBlock>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Col xs={12} md={6} lg={4} className="text-justify">
+      <Card style={{ width: '18rem' }}>
+        <CardImg variant="top" src={image} />
+        <CardBlock>
+          <CardTitle>{title}</CardTitle>
+          <CardText>{text}</CardText>
+        </CardBlock>
+      </Card>
+    </Col>
   );
 };
 
