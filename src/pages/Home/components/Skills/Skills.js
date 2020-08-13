@@ -1,8 +1,8 @@
 import React from 'react';
 
-import imgDesignThinking from '@/assets/images/img_designthinking.png';
-import imgUserResearch from '@/assets/images/img_userresearch.png';
-import imgVisualDesign from '@/assets/images/img_visualdesign.png';
+import imgDesignThinking from '@/assets/images/skills/design_thinking.png';
+import imgUserResearch from '@/assets/images/skills/user_research.png';
+import imgVisualDesign from '@/assets/images/skills/visual_design.png';
 
 import { Centered } from '@/components/layout/helpers';
 

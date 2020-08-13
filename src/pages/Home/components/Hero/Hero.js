@@ -2,7 +2,7 @@ import React from 'react';
 
 import Typewriter from 'typewriter-effect';
 
-import imgHeader from '@/assets/images/img_header.png';
+import imgHeader from '@/assets/images/hero.png';
 
 import { Centered } from '@/components/layout/helpers';
 
