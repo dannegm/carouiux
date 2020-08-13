@@ -16,7 +16,7 @@ const Projects = () => {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col xs={12}>
           <ProjectsTitle>Projects</ProjectsTitle>
           <span>Find here this selected works acrross this field.</span>
         </Col>

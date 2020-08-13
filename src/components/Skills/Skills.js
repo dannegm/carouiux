@@ -33,10 +33,10 @@ const Skills = () => {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col xs={12}>
           <h1>Skills</h1>
         </Col>
-        <Col className="text-justify">
+        <Col xs={12} className="text-justify">
           <h5>
             Below are the three main areas that my key strengths lie in, as well
             as software skills. For a full breakdown, please refer to my

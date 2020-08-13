@@ -14,8 +14,8 @@ const SkillCard = (props) => {
 
   return (
     <Col xs={12} md={6} lg={4} className="text-justify">
-      <Card style={{ width: '18rem' }}>
-        <CardImg variant="top" src={image} />
+      <Card>
+        <CardImg top src={image} style={{ maxWidth: '100%' }} />
         <CardBlock>
           <CardTitle>{title}</CardTitle>
           <CardText>{text}</CardText>

@@ -1,27 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Container, Navbar, NavbarBrand, NavLink } from '@bootstrap-styled/v4';
+import {
+  Navbar,
+  Container,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink,
+} from '@bootstrap-styled/v4';
 
 const NavigationBar = () => {
+  const [isOpen, setOpen] = useState(false);
   return (
-    <Container>
-      <Navbar bg="light">
-        <NavbarBrand href="/" className="ml-5">
-          Carolina Sánchez Guzmán
-        </NavbarBrand>
-        <Navbar className="ml-auto">
-          <NavLink href="#" className="mt-2 mb-2 ml-4 mr-4">
-            Skills
-          </NavLink>
-          <NavLink href="#" className="mt-2 mb-2 ml-4 mr-4">
-            Projects
-          </NavLink>
-          <NavLink href="#" className="mt-2 mb-2 ml-4 mr-4">
-            About
-          </NavLink>
-        </Navbar>
-      </Navbar>
-    </Container>
+    <Navbar light toggleable="sm">
+      <Container>
+        <div className="d-flex justify-content-between">
+          <NavbarBrand href="/">Carolina Sánchez Guzmán</NavbarBrand>
+          <NavbarToggler onClick={() => setOpen(!isOpen)} />
+        </div>
+        <Collapse navbar isOpen={isOpen}>
+          <Nav navbar className="ml-auto">
+            <NavItem>
+              <NavLink href="#" className="mt-2 mb-2 ml-4 mr-4">
+                Skills
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#" className="mt-2 mb-2 ml-4 mr-4">
+                Projects
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#" className="mt-2 mb-2 ml-4 mr-4">
+                About
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
