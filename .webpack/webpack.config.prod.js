@@ -20,9 +20,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: ['styled-components'],
+            },
+          },
+          'stylelint-custom-processor-loader',
+        ],
       },
       {
         test: /\.html$/,
@@ -94,7 +102,7 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['.js', '.css'],
+    extensions: ['.js'],
     alias: {
       '@': path.join(__dirname, './../src/'),
     },
