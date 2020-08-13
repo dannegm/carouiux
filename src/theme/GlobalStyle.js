@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Bw Nista Geometric DEMO', Helvetica, Arial, sans-serif;
+    color: #050038;
   }
 
   a {
