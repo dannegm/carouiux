@@ -1,7 +1,10 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { useState } from 'react';
+import ReactBodymovin from 'react-bodymovin';
 
 import footer_placeholder from '@/assets/images/footer_placeholder.png';
+
+import animationData from '@/assets/animations/animacion.json';
 
 import { Centered } from '@/components/layout/helpers';
 
@@ -38,6 +41,16 @@ const Footer = () => {
     },
   ];
 
+  const [isStoped, setStoped] = useState(false);
+  const [isPaused, setPaused] = useState(false);
+
+  const defaultAnimationOptions = {
+    loop: true,
+    autoplay: true,
+    prerender: true,
+    animationData: animationData,
+  };
+
   return (
     <FooterWrapper>
       <Centered>
@@ -47,7 +60,7 @@ const Footer = () => {
         </FooterTitle>
         <FooterContent>
           <FooterFigure>
-            <img src={footer_placeholder} alt="" />
+            <ReactBodymovin options={defaultAnimationOptions} />
           </FooterFigure>
           <FooterContactList>
             {contactList.map((item) => (

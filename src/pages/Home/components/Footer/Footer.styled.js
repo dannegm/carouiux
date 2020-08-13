@@ -15,7 +15,6 @@ export const FooterTitle = styled.h2`
 
 export const FooterContent = styled.div`
   display: flex;
-  justify-content: space-around;
   align-items: center;
   margin-top: 5rem;
   margin-bottom: 7rem;
@@ -23,7 +22,7 @@ export const FooterContent = styled.div`
 
 export const FooterFigure = styled.figure`
   flex: none;
-  width: 22rem;
+  width: 32rem;
 `;
 
 export const FooterContactList = styled.div`
