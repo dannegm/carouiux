@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 
 import footer_placeholder from '@/assets/images/footer_placeholder.png';
@@ -52,7 +53,7 @@ const Footer = () => {
             {contactList.map((item) => (
               <FooterContactListItem key={item.key}>
                 <FooterContactListItemLabel>
-                  {item.label}:
+                  {`${item.label}:`}
                 </FooterContactListItemLabel>
                 <FooterContactListItemLink href={item.href} target="_blank">
                   {item.display}
