@@ -67,11 +67,4 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.+js": [
-      "npm run prettier:fix",
-      "npm run lint"
-    ]
-  }
 }

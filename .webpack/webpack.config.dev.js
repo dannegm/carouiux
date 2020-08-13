@@ -17,6 +17,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
@@ -73,7 +77,7 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     alias: {
       '@': path.join(__dirname, './../src/'),
     },
