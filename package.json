@@ -18,6 +18,12 @@
   "dependencies": {
     "@bootstrap-styled/provider": "^2.0.2",
     "@bootstrap-styled/v4": "^3.4.0",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "config": "^3.3.1",
+    "dotenv": "^8.2.0",
+    "firebase": "^7.18.0",
+    "i18next-react-postprocessor": "^3.0.3",
     "polished": "^3.6.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -28,7 +34,8 @@
     "react-router-scroll": "^0.4.4",
     "styled-components": "^5.1.1",
     "styled-normalize": "^8.0.7",
-    "typewriter-effect": "^2.13.1"
+    "typewriter-effect": "^2.13.1",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",

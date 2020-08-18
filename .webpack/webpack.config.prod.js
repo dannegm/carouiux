@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -99,6 +100,8 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: path.join(__dirname, './../public/index.html'),
     }),
+
+    new webpack.DefinePlugin({ config: JSON.stringify(require('config')) }),
   ],
 
   resolve: {

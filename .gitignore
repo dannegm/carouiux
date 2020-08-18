@@ -5,7 +5,6 @@
 
 # production
 **/build
-**/config/production.json
 *.env.production
 *.env.prod
 *.env
