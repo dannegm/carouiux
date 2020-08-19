@@ -18,7 +18,7 @@ import {
 
 const allowedTypes = 'image/png, image/jpeg';
 
-const DropZone = ({ picture, folder, onSuccess, onError }) => {
+const DropZone = ({ picture, folder, error, onSuccess, onError }) => {
   const dropZone = useRef();
   const filePicker = useRef();
 
@@ -84,6 +84,7 @@ const DropZone = ({ picture, folder, onSuccess, onError }) => {
       onDragLeave={dragLeave}
       onDrop={fileDrop}
       dragOver={isDragOver}
+      hasError={error}
     >
       <FilePicker
         ref={filePicker}
@@ -113,6 +114,7 @@ const DropZone = ({ picture, folder, onSuccess, onError }) => {
 DropZone.propTypes = {
   picture: PropTypes.string,
   folder: PropTypes.string,
+  error: PropTypes.bool,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
@@ -120,6 +122,7 @@ DropZone.propTypes = {
 DropZone.defaultProps = {
   picture: '',
   folder: '',
+  error: false,
   onSuccess: () => null,
   onError: () => null,
 };

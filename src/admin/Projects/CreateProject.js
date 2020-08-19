@@ -19,6 +19,8 @@ import DropZone from './../components/DropZone';
 
 import { Wrapper, CardHeader, CardHeaderButton } from './Projects.styled';
 
+import validator, { noEmptyString } from '@/utils/helpers/validator';
+
 const INITIAL_PROJECT = {
   uid: null,
   title: '',
@@ -52,6 +54,20 @@ const CreateProject = () => {
   }, []);
 
   // Save Project
+  const validations = {
+    title: validator(projectModel.title, [noEmptyString()]),
+    previewText: validator(projectModel.previewText, [noEmptyString()]),
+    cover: validator(projectModel.cover, [noEmptyString()]),
+    project: validator(projectModel.project, [noEmptyString()]),
+    role: validator(projectModel.role, [noEmptyString()]),
+    description: validator(projectModel.description, [noEmptyString()]),
+    callToActionLabel: validator(projectModel.callToActionLabel, [
+      noEmptyString(),
+    ]),
+  };
+
+  const isValid = Object.values(validations).every((i) => !i);
+
   const clearProject = () => {
     setProjectModel(INITIAL_PROJECT);
     uid.current = uuid();
@@ -59,13 +75,15 @@ const CreateProject = () => {
   };
 
   const handleSave = async () => {
-    try {
-      await db.collection('projects').doc(projectModel.uid).set(projectModel);
-      alert('Todo bien :D');
-      clearProject();
-    } catch (e) {
-      alert('Algo malió sal');
-      console.log(e);
+    if (isValid) {
+      try {
+        await db.collection('projects').doc(projectModel.uid).set(projectModel);
+        alert('Todo bien :D');
+        clearProject();
+      } catch (e) {
+        alert('Algo malió sal');
+        console.log(e);
+      }
     }
   };
 
@@ -80,6 +98,7 @@ const CreateProject = () => {
               color="primary"
               endIcon={<Save />}
               onClick={handleSave}
+              disabled={!isValid}
             >
               Save Project
             </CardHeaderButton>
@@ -95,6 +114,8 @@ const CreateProject = () => {
                     variant="outlined"
                     value={projectModel.title}
                     onChange={(e) => handleChange(e, 'title')}
+                    error={!!validations.title}
+                    helperText={validations.title}
                   />
                 </FormControl>
               </Grid>
@@ -105,6 +126,8 @@ const CreateProject = () => {
                     variant="outlined"
                     value={projectModel.previewText}
                     onChange={(e) => handleChange(e, 'previewText')}
+                    error={!!validations.previewText}
+                    helperText={validations.previewText}
                     rows={2}
                     multiline
                   />
@@ -119,6 +142,7 @@ const CreateProject = () => {
                 folder="covers"
                 picture={projectModel.cover}
                 onSuccess={(picture) => updateField('cover', picture)}
+                error={!!validations.cover}
               />
             </Grid>
 
@@ -136,6 +160,8 @@ const CreateProject = () => {
                     variant="outlined"
                     value={projectModel.project}
                     onChange={(e) => handleChange(e, 'project')}
+                    error={!!validations.project}
+                    helperText={validations.project}
                   />
                 </FormControl>
               </Grid>
@@ -146,6 +172,8 @@ const CreateProject = () => {
                     variant="outlined"
                     value={projectModel.role}
                     onChange={(e) => handleChange(e, 'role')}
+                    error={!!validations.role}
+                    helperText={validations.role}
                   />
                 </FormControl>
               </Grid>
@@ -156,6 +184,8 @@ const CreateProject = () => {
                     variant="outlined"
                     value={projectModel.description}
                     onChange={(e) => handleChange(e, 'description')}
+                    error={!!validations.description}
+                    helperText={validations.description}
                     rows={8}
                     multiline
                   />
@@ -173,6 +203,8 @@ const CreateProject = () => {
                     variant="outlined"
                     value={projectModel.callToActionLabel}
                     onChange={(e) => handleChange(e, 'callToActionLabel')}
+                    error={!!validations.callToActionLabel}
+                    helperText={validations.callToActionLabel}
                   />
                 </FormControl>
               </Grid>

@@ -55,6 +55,13 @@ export const DropZoneWrapper = styled.div`
       background-color: ${rgba(accentColor, 0.1)};
     `}
 
+  ${({ hasError, dragOver }) =>
+    hasError &&
+    !dragOver &&
+    css`
+      border-color: #b25235;
+    `}
+
   & ${DropZonePicture} + ${DropZoneMessage} {
     flex: none;
     height: auto;
