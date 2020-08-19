@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { storage } from '@/services/firebase';
 
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgressWithLabel } from '@material-ui/core';
 import { ImageSearch } from '@material-ui/icons';
 
 import {
@@ -96,7 +96,7 @@ const DropZone = ({ picture, folder, onSuccess, onError }) => {
       <DropZoneMessage onClick={() => filePicker.current.click()} role="button">
         <DropZoneIcon>
           {progress ? (
-            <CircularProgress variant="determinate" value={progress} />
+            <CircularProgressWithLabel variant="static" value={progress} />
           ) : (
             <ImageSearch />
           )}
