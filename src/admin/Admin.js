@@ -16,15 +16,13 @@ const Admin = () => {
   }
 
   return (
-    <>
-      <Shell>
-        <Switch>
-          {routes({ path }).map((route) => (
-            <Route key={`admin.${route.name}`} {...route} />
-          ))}
-        </Switch>
-      </Shell>
-    </>
+    <Shell>
+      <Switch>
+        {routes({ path }).map((route) => {
+          return <Route key={`root.admin.${route.name}`} {...route} />;
+        })}
+      </Switch>
+    </Shell>
   );
 };
 export default Admin;

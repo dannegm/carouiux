@@ -1,14 +1,32 @@
 import React from 'react';
 
-import useAuth from '@/state/hooks/useAuth';
+import { Card } from '@material-ui/core';
+import { Add } from '@material-ui/icons';
+
+import { Wrapper, CardHeader, CardHeaderButton } from './Projects.styled';
+import { useRouteMatch } from 'react-router-dom';
 
 const Projects = () => {
-  const { user } = useAuth();
+  let { url } = useRouteMatch();
 
   return (
-    <>
-      <h1>Hola {user.displayName}</h1>
-    </>
+    <Wrapper>
+      <Card>
+        <CardHeader
+          title="Projects"
+          action={
+            <CardHeaderButton
+              variant="contained"
+              color="primary"
+              endIcon={<Add />}
+              href="/secret/projects/create"
+            >
+              Create Project
+            </CardHeaderButton>
+          }
+        />
+      </Card>
+    </Wrapper>
   );
 };
 export default Projects;

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { db } from '@/services/firebase';
 
 import { Centered } from '@/components/layout/helpers';
 
@@ -10,9 +12,22 @@ import {
   ProjectsDescription,
 } from './Projects.styled';
 
-import projectsData from '@/assets/mocks/projects.json';
-
 const Projects = () => {
+  const [projectsData, setProjectsData] = useState([]);
+
+  const fetchProjects = async () => {
+    const projectsSnapshot = await db
+      .collection('projects')
+      .where('showInHome', '==', true)
+      .get();
+    const data = projectsSnapshot.docs.map((doc) => doc.data());
+    setProjectsData(data);
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   return (
     <ProjectsWrapper>
       <Centered>
@@ -23,9 +38,10 @@ const Projects = () => {
 
         {projectsData.map((project) => (
           <ProjectItem
+            key={project.uid}
             cover={project.cover}
             title={project.title}
-            description={project.description}
+            description={project.previewText}
             callToActionLabel={project.callToActionLabel}
           />
         ))}

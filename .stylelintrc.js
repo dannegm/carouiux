@@ -4,5 +4,8 @@ module.exports = {
   rules: {
     'selector-type-case': null,
     'value-keyword-case': null,
+    'rule-empty-line-before': null,
+    'selector-type-no-unknown': null,
+    'declaration-empty-line-before': null,
   },
 };

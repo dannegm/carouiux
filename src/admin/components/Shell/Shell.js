@@ -12,7 +12,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import { Spacer, Title, IconButton } from './Shell.styled';
 
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { ExitToApp, Widgets } from '@material-ui/icons';
 
 import useAuth from '@/state/hooks/useAuth';
 
@@ -24,11 +24,14 @@ const Shell = ({ children }) => {
       <GlobalStyle />
       <AppBar position="static">
         <Toolbar>
-          <Title variant="h5">Admin Panel</Title>
+          <IconButton edge="start">
+            <Widgets />
+          </IconButton>
+          <Title variant="h5">Dashboard</Title>
           <Spacer />
           <Avatar src={user.photoURL} />
           <IconButton edge="end" onClick={requestLogout}>
-            <ExitToAppIcon />
+            <ExitToApp />
           </IconButton>
         </Toolbar>
       </AppBar>
