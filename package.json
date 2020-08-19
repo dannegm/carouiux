@@ -24,6 +24,7 @@
     "dotenv": "^8.2.0",
     "firebase": "^7.18.0",
     "i18next-react-postprocessor": "^3.0.3",
+    "notistack": "^0.9.17",
     "polished": "^3.6.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
+import { useSnackbar } from 'notistack';
 
 import { db } from '@/services/firebase';
 
@@ -13,7 +14,7 @@ import {
   Checkbox,
   Divider,
 } from '@material-ui/core';
-import { Save } from '@material-ui/icons';
+import { Save, DeleteSweep } from '@material-ui/icons';
 
 import DropZone from './../components/DropZone';
 
@@ -54,6 +55,8 @@ const CreateProject = () => {
   }, []);
 
   // Save Project
+  const { enqueueSnackbar } = useSnackbar();
+
   const validations = {
     title: validator(projectModel.title, [noEmptyString()]),
     previewText: validator(projectModel.previewText, [noEmptyString()]),
@@ -69,20 +72,21 @@ const CreateProject = () => {
   const isValid = Object.values(validations).every((i) => !i);
 
   const clearProject = () => {
-    setProjectModel(INITIAL_PROJECT);
-    uid.current = uuid();
-    updateField('uid', uid.current);
+    setProjectModel({
+      ...INITIAL_PROJECT,
+      uid: uuid(),
+    });
   };
 
   const handleSave = async () => {
     if (isValid) {
       try {
         await db.collection('projects').doc(projectModel.uid).set(projectModel);
-        alert('Todo bien :D');
+        enqueueSnackbar('The project has been created', { variant: 'success' });
         clearProject();
       } catch (e) {
-        alert('Algo malió sal');
-        console.log(e);
+        enqueueSnackbar('Something went wrong', { variant: 'error' });
+        console.error(e);
       }
     }
   };
@@ -93,20 +97,31 @@ const CreateProject = () => {
         <CardHeader
           title="New Project"
           action={
-            <CardHeaderButton
-              variant="contained"
-              color="primary"
-              endIcon={<Save />}
-              onClick={handleSave}
-              disabled={!isValid}
-            >
-              Save Project
-            </CardHeaderButton>
+            <>
+              <CardHeaderButton
+                variant="contained"
+                color="secondary"
+                endIcon={<DeleteSweep />}
+                onClick={clearProject}
+              >
+                Clear
+              </CardHeaderButton>
+              <CardHeaderButton
+                variant="contained"
+                color="primary"
+                endIcon={<Save />}
+                onClick={handleSave}
+                disabled={!isValid}
+              >
+                Save Project
+              </CardHeaderButton>
+            </>
           }
         />
         <CardContent>
           <Grid container>
             <Grid container item xs={6} direction="column" spacing={2}>
+              {/* Title */}
               <Grid item>
                 <FormControl fullWidth>
                   <TextField
@@ -119,6 +134,8 @@ const CreateProject = () => {
                   />
                 </FormControl>
               </Grid>
+
+              {/* Preview Text */}
               <Grid item>
                 <FormControl fullWidth>
                   <TextField
@@ -138,6 +155,7 @@ const CreateProject = () => {
                 <Divider />
               </Grid>
 
+              {/* Cover */}
               <DropZone
                 folder="covers"
                 picture={projectModel.cover}
@@ -153,6 +171,7 @@ const CreateProject = () => {
             />
 
             <Grid container item xs direction="column" spacing={3}>
+              {/* Project */}
               <Grid item>
                 <FormControl fullWidth>
                   <TextField
@@ -165,6 +184,8 @@ const CreateProject = () => {
                   />
                 </FormControl>
               </Grid>
+
+              {/* Role */}
               <Grid item>
                 <FormControl fullWidth>
                   <TextField
@@ -177,6 +198,8 @@ const CreateProject = () => {
                   />
                 </FormControl>
               </Grid>
+
+              {/* Description */}
               <Grid item>
                 <FormControl fullWidth>
                   <TextField
@@ -196,6 +219,7 @@ const CreateProject = () => {
                 <Divider />
               </Grid>
 
+              {/* Call To Action Label */}
               <Grid item>
                 <FormControl fullWidth>
                   <TextField
@@ -208,6 +232,8 @@ const CreateProject = () => {
                   />
                 </FormControl>
               </Grid>
+
+              {/* Show In Home */}
               <Grid item>
                 <FormControlLabel
                   control={

@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 
 export const CardHeaderButton = styled(MuiButton)`
   box-shadow: none !important;
+  margin-left: 0.5rem !important;
 `;
 
 export const CardHeader = styled(MuiCardHeader)`

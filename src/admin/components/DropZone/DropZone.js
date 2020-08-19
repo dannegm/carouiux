@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { storage } from '@/services/firebase';
@@ -28,6 +28,10 @@ const DropZone = ({ picture, folder, error, onSuccess, onError }) => {
 
   const $storage = storage.ref();
   let $pictureRef = null;
+
+  useEffect(() => {
+    setPictureUrl(picture);
+  }, [picture]);
 
   const dragOver = (e) => {
     e.preventDefault();
