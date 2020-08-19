@@ -100,7 +100,6 @@ const CreateProject = () => {
             <>
               <CardHeaderButton
                 variant="contained"
-                color="secondary"
                 endIcon={<DeleteSweep />}
                 onClick={clearProject}
               >

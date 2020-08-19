@@ -6,12 +6,9 @@ import GlobalStyle from '@/theme/GlobalStyle';
 import theme from '@/theme/materialTheme';
 import { ThemeProvider } from '@material-ui/styles';
 
-import Container from '@material-ui/core/Container';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Avatar from '@material-ui/core/Avatar';
+import { Container, Toolbar, Avatar, IconButton } from '@material-ui/core';
 
-import { Spacer, Title, IconButton } from './Shell.styled';
+import { AppBar, Spacer, Title } from './Shell.styled';
 
 import { ExitToApp, Widgets } from '@material-ui/icons';
 
