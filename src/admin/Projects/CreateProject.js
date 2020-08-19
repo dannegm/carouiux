@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { useSnackbar } from 'notistack';
+import clsx from 'clsx';
 
 import { db } from '@/services/firebase';
 
@@ -14,9 +15,13 @@ import {
   Checkbox,
   Divider,
   Link,
+  IconButton,
+  Tooltip,
+  Collapse,
+  makeStyles,
 } from '@material-ui/core';
 
-import { Save, DeleteSweep } from '@material-ui/icons';
+import { Save, DeleteSweep, ExpandMore } from '@material-ui/icons';
 
 import {
   Wrapper,
@@ -40,6 +45,19 @@ const INITIAL_PROJECT = {
   callToActionLabel: 'View case study',
   showInHome: true,
 };
+
+const useStyles = makeStyles((theme) => ({
+  expand: {
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: 'rotate(180deg)',
+  },
+}));
 
 const CreateProject = () => {
   // Project Data
@@ -98,6 +116,10 @@ const CreateProject = () => {
     }
   };
 
+  // Expand/Collapse
+  const classes = useStyles();
+  const [expanded, setExpanded] = useState(true);
+
   return (
     <Wrapper>
       <Card>
@@ -111,6 +133,16 @@ const CreateProject = () => {
           }
           action={
             <>
+              <Tooltip title="Show/Hide Baisc Info" placement="left">
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={() => setExpanded(!expanded)}
+                >
+                  <ExpandMore />
+                </IconButton>
+              </Tooltip>
               <CardHeaderButton
                 variant="contained"
                 endIcon={<DeleteSweep />}
@@ -130,138 +162,140 @@ const CreateProject = () => {
             </>
           }
         />
-        <CardContent>
-          <Grid container>
-            <Grid container item xs={6} direction="column" spacing={2}>
-              {/* Title */}
-              <Grid item>
-                <FormControl fullWidth>
-                  <TextField
-                    label="Title"
-                    variant="outlined"
-                    value={projectModel.title}
-                    onChange={(e) => handleChange(e, 'title')}
-                    error={!!validations.title}
-                    helperText={validations.title}
-                  />
-                </FormControl>
-              </Grid>
-
-              {/* Preview Text */}
-              <Grid item>
-                <FormControl fullWidth>
-                  <TextField
-                    label="Preview Text"
-                    variant="outlined"
-                    value={projectModel.previewText}
-                    onChange={(e) => handleChange(e, 'previewText')}
-                    error={!!validations.previewText}
-                    helperText={validations.previewText}
-                    rows={2}
-                    multiline
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid item>
-                <Divider />
-              </Grid>
-
-              {/* Cover */}
-              <DropZone
-                folder="covers"
-                picture={projectModel.cover}
-                onSuccess={(picture) => updateField('cover', picture)}
-                error={!!validations.cover}
-              />
-            </Grid>
-
-            <Divider
-              orientation="vertical"
-              flexItem
-              style={{ marginLeft: '1rem', marginRight: '1rem' }}
-            />
-
-            <Grid container item xs direction="column" spacing={3}>
-              {/* Project */}
-              <Grid item>
-                <FormControl fullWidth>
-                  <TextField
-                    label="Project"
-                    variant="outlined"
-                    value={projectModel.project}
-                    onChange={(e) => handleChange(e, 'project')}
-                    error={!!validations.project}
-                    helperText={validations.project}
-                  />
-                </FormControl>
-              </Grid>
-
-              {/* Role */}
-              <Grid item>
-                <FormControl fullWidth>
-                  <TextField
-                    label="Role"
-                    variant="outlined"
-                    value={projectModel.role}
-                    onChange={(e) => handleChange(e, 'role')}
-                    error={!!validations.role}
-                    helperText={validations.role}
-                  />
-                </FormControl>
-              </Grid>
-
-              {/* Description */}
-              <Grid item>
-                <FormControl fullWidth>
-                  <TextField
-                    label="Description"
-                    variant="outlined"
-                    value={projectModel.description}
-                    onChange={(e) => handleChange(e, 'description')}
-                    error={!!validations.description}
-                    helperText={validations.description}
-                    rows={8}
-                    multiline
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid item>
-                <Divider />
-              </Grid>
-
-              {/* Call To Action Label */}
-              <Grid item>
-                <FormControl fullWidth>
-                  <TextField
-                    label="Call To Action Label"
-                    variant="outlined"
-                    value={projectModel.callToActionLabel}
-                    onChange={(e) => handleChange(e, 'callToActionLabel')}
-                    error={!!validations.callToActionLabel}
-                    helperText={validations.callToActionLabel}
-                  />
-                </FormControl>
-              </Grid>
-
-              {/* Show In Home */}
-              <Grid item>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={projectModel.showInHome}
-                      onChange={(e) =>
-                        updateField('showInHome', e.target.checked)
-                      }
+        <Collapse in={expanded} timeout="auto">
+          <CardContent>
+            <Grid container>
+              <Grid container item xs={6} direction="column" spacing={2}>
+                {/* Title */}
+                <Grid item>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="Title"
+                      variant="outlined"
+                      value={projectModel.title}
+                      onChange={(e) => handleChange(e, 'title')}
+                      error={!!validations.title}
+                      helperText={validations.title}
                     />
-                  }
-                  label="Show in Home"
+                  </FormControl>
+                </Grid>
+
+                {/* Preview Text */}
+                <Grid item>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="Preview Text"
+                      variant="outlined"
+                      value={projectModel.previewText}
+                      onChange={(e) => handleChange(e, 'previewText')}
+                      error={!!validations.previewText}
+                      helperText={validations.previewText}
+                      rows={2}
+                      multiline
+                    />
+                  </FormControl>
+                </Grid>
+
+                <Grid item>
+                  <Divider />
+                </Grid>
+
+                {/* Cover */}
+                <DropZone
+                  folder="covers"
+                  picture={projectModel.cover}
+                  onSuccess={(picture) => updateField('cover', picture)}
+                  error={!!validations.cover}
                 />
               </Grid>
+
+              <Divider
+                orientation="vertical"
+                flexItem
+                style={{ marginLeft: '1rem', marginRight: '1rem' }}
+              />
+
+              <Grid container item xs direction="column" spacing={3}>
+                {/* Project */}
+                <Grid item>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="Project"
+                      variant="outlined"
+                      value={projectModel.project}
+                      onChange={(e) => handleChange(e, 'project')}
+                      error={!!validations.project}
+                      helperText={validations.project}
+                    />
+                  </FormControl>
+                </Grid>
+
+                {/* Role */}
+                <Grid item>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="Role"
+                      variant="outlined"
+                      value={projectModel.role}
+                      onChange={(e) => handleChange(e, 'role')}
+                      error={!!validations.role}
+                      helperText={validations.role}
+                    />
+                  </FormControl>
+                </Grid>
+
+                {/* Description */}
+                <Grid item>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="Description"
+                      variant="outlined"
+                      value={projectModel.description}
+                      onChange={(e) => handleChange(e, 'description')}
+                      error={!!validations.description}
+                      helperText={validations.description}
+                      rows={8}
+                      multiline
+                    />
+                  </FormControl>
+                </Grid>
+
+                <Grid item>
+                  <Divider />
+                </Grid>
+
+                {/* Call To Action Label */}
+                <Grid item>
+                  <FormControl fullWidth>
+                    <TextField
+                      label="Call To Action Label"
+                      variant="outlined"
+                      value={projectModel.callToActionLabel}
+                      onChange={(e) => handleChange(e, 'callToActionLabel')}
+                      error={!!validations.callToActionLabel}
+                      helperText={validations.callToActionLabel}
+                    />
+                  </FormControl>
+                </Grid>
+
+                {/* Show In Home */}
+                <Grid item>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={projectModel.showInHome}
+                        onChange={(e) =>
+                          updateField('showInHome', e.target.checked)
+                        }
+                      />
+                    }
+                    label="Show in Home"
+                  />
+                </Grid>
+              </Grid>
             </Grid>
-          </Grid>
-        </CardContent>
+          </CardContent>
+        </Collapse>
       </Card>
     </Wrapper>
   );
