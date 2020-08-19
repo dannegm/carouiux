@@ -33,6 +33,7 @@ import {
 import DropZone from './../components/DropZone';
 
 import validator, { noEmptyString } from '@/utils/helpers/validator';
+import { useHistory } from 'react-router-dom';
 
 const INITIAL_PROJECT = {
   uid: null,
@@ -80,6 +81,7 @@ const CreateProject = () => {
   }, []);
 
   // Save Project
+  const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
 
   const validations = {
@@ -108,7 +110,7 @@ const CreateProject = () => {
       try {
         await db.collection('projects').doc(projectModel.uid).set(projectModel);
         enqueueSnackbar('The project has been created', { variant: 'success' });
-        clearProject();
+        history.push(`/secret/projects/edit/${projectModel.uid}`);
       } catch (e) {
         enqueueSnackbar('Something went wrong', { variant: 'error' });
         console.error(e);

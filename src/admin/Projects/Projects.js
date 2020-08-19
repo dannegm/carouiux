@@ -71,7 +71,12 @@ const Projects = () => {
               <MuiCardHeader title={project.title} />
               <CardMedia style={{ height: '160px' }} image={project.cover} />
               <CardActions>
-                <Button color="primary">Edit</Button>
+                <Button
+                  color="primary"
+                  href={`/secret/projects/edit/${project.uid}`}
+                >
+                  Edit
+                </Button>
               </CardActions>
             </Card>
           </Grid>

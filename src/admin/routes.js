@@ -11,6 +11,10 @@ const CreateProject = lazy(() =>
   )
 );
 
+const EditProject = lazy(() =>
+  import(/* webpackChunkName: "admin_EditProject" */ './Projects/EditProject')
+);
+
 const exact = true;
 
 const buildRoutes = ({ path }) => {
@@ -31,6 +35,12 @@ const buildRoutes = ({ path }) => {
       name: 'projects.create',
       path: `${path}/projects/create`,
       component: CreateProject,
+      exact,
+    },
+    {
+      name: 'projects.edit',
+      path: `${path}/projects/edit/:uid`,
+      component: EditProject,
       exact,
     },
   ];
