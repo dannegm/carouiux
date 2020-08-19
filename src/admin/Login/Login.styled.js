@@ -12,12 +12,14 @@ export const LoginWrapper = styled.div`
 `;
 
 export const LoginAvatar = styled(Avatar)`
-  width: 5rem !important;
-  height: 5rem !important;
-  background-color: #eaeaea !important;
+  &.MuiAvatar-root {
+    width: 5rem;
+    height: 5rem;
+    background-color: #eaeaea;
 
-  & svg {
-    font-size: 3rem !important;
+    & svg {
+      font-size: 3rem;
+    }
   }
 `;
 
@@ -56,13 +58,17 @@ export const PurpleText = styled.span`
 `;
 
 export const LoginPrimaryButton = styled(Button)`
-  box-shadow: none !important;
-  border-radius: 4rem !important;
-  background-color: #3f51b5 !important;
-  color: #fff !important;
-  margin-top: 2rem !important;
+  &.MuiButton-root {
+    box-shadow: none;
+    border-radius: 4rem;
+    background-color: #3f51b5;
+    color: #fff;
+    margin-top: 2rem;
+  }
 `;
 
 export const LoginLinkButton = styled(Button)`
-  margin-top: 1rem !important;
+  &.MuiButton-root {
+    margin-top: 1rem;
+  }
 `;

@@ -13,12 +13,19 @@ import {
   TextField,
   Checkbox,
   Divider,
+  Link,
 } from '@material-ui/core';
+
 import { Save, DeleteSweep } from '@material-ui/icons';
 
-import DropZone from './../components/DropZone';
+import {
+  Wrapper,
+  CardHeader,
+  CardHeaderButton,
+  Breadcrumbs,
+} from './Projects.styled';
 
-import { Wrapper, CardHeader, CardHeaderButton } from './Projects.styled';
+import DropZone from './../components/DropZone';
 
 import validator, { noEmptyString } from '@/utils/helpers/validator';
 
@@ -95,7 +102,13 @@ const CreateProject = () => {
     <Wrapper>
       <Card>
         <CardHeader
-          title="New Project"
+          title={
+            <Breadcrumbs>
+              <Link href="/secret">🏠</Link>
+              <Link href="/secret/projects">Projects</Link>
+              <Link href="/secret/projects/create">New Project</Link>
+            </Breadcrumbs>
+          }
           action={
             <>
               <CardHeaderButton

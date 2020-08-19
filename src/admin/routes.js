@@ -1,4 +1,5 @@
-import { lazy } from 'react';
+import React, { lazy } from 'react';
+import { Redirect } from 'react-router-dom';
 
 const Projects = lazy(() =>
   import(/* webpackChunkName: "admin_Projects" */ './Projects')
@@ -15,9 +16,16 @@ const exact = true;
 const buildRoutes = ({ path }) => {
   const routes = [
     {
-      name: 'projects',
+      name: 'root',
       path: `${path}`,
-      component: CreateProject,
+      component: () => <Redirect to={`${path}/projects`} />,
+      exact,
+    },
+    {
+      name: 'projects',
+      path: `${path}/projects`,
+      component: Projects,
+      exact,
     },
     {
       name: 'projects.create',

@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { SnackbarProvider } from 'notistack';
 
-import GlobalStyle from '@/theme/GlobalStyle';
-import theme from '@/theme/materialTheme';
+import GlobalStyle from '@/utils/theme/GlobalStyle';
+import theme from '@/utils/theme/materialTheme';
 import { ThemeProvider } from '@material-ui/styles';
 
 import { Container, Toolbar, Avatar, IconButton } from '@material-ui/core';
 
-import { AppBar, Spacer, Title } from './Shell.styled';
+import { ShellWrapper, AppBar, Spacer, Title } from './Shell.styled';
 
 import { ExitToApp, Widgets } from '@material-ui/icons';
 
@@ -21,20 +21,22 @@ const Shell = ({ children }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <SnackbarProvider maxSnack={5}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton edge="start">
-              <Widgets />
-            </IconButton>
-            <Title variant="h5">Dashboard</Title>
-            <Spacer />
-            <Avatar src={user.photoURL} />
-            <IconButton edge="end" onClick={requestLogout}>
-              <ExitToApp />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Container fixed>{children}</Container>
+        <ShellWrapper>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton edge="start">
+                <Widgets />
+              </IconButton>
+              <Title variant="h5">Dashboard</Title>
+              <Spacer />
+              <Avatar src={user.photoURL} />
+              <IconButton edge="end" onClick={requestLogout}>
+                <ExitToApp />
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+          <Container fixed>{children}</Container>
+        </ShellWrapper>
       </SnackbarProvider>
     </ThemeProvider>
   );

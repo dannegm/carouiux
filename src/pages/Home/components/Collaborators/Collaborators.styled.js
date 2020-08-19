@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { transparentTiles } from '@/theme/helpers';
+import { transparentTiles } from '@/utils/theme/helpers';
 
 export const CollaboratorsWrapper = styled.section`
   margin-bottom: 8rem;

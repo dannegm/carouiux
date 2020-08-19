@@ -20,6 +20,5 @@ export default [
     name: 'admin.root',
     path: '/secret',
     component: Admin,
-    exact,
   },
 ];
