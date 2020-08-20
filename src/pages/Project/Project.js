@@ -101,6 +101,15 @@ const Project = () => {
                       <img src={row.content[0].content} />
                     )}
                   </MediumColumn>
+                  {row.distribution !== '1x' && (
+                    <MediumColumn>
+                      {row.content[1].type === 'text' ? (
+                        <HtmlContent>{row.content[1].content}</HtmlContent>
+                      ) : (
+                        <img src={row.content[1].content} />
+                      )}
+                    </MediumColumn>
+                  )}
                 </MediumRow>
               ))}
             </MediumContent>

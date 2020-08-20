@@ -24,7 +24,7 @@ import {
   Button,
 } from '@material-ui/core';
 
-import { Add, Save } from '@material-ui/icons';
+import { Add, Save, SwapHoriz } from '@material-ui/icons';
 
 import 'medium-editor/dist/css/medium-editor.css';
 import 'medium-editor/dist/css/themes/default.css';
@@ -125,6 +125,13 @@ const RowSection = ({ content, distribution, onChange }) => {
     setDistribution('1x2');
   };
 
+  const swap = ([first, second]) => [second, first];
+  const handleSwap = () => {
+    console.log('normal', _content);
+    console.log('swaped', swap(_content));
+    setContent(swap(_content));
+  };
+
   useEffect(() => {
     if (distribution === '1x') {
       handleSingleColumn();
@@ -158,26 +165,38 @@ const RowSection = ({ content, distribution, onChange }) => {
           </Button>
         </ButtonGroup>
         {!isSingleColumn && (
-          <ButtonGroup disableElevation size="small" variant="contained">
+          <>
+            <ButtonGroup disableElevation size="small" variant="contained">
+              <Button
+                color={_distribution === '1x2' && 'secondary'}
+                onClick={() => setDistribution('1x2')}
+              >
+                1x2
+              </Button>
+              <Button
+                color={_distribution === '1x3' && 'secondary'}
+                onClick={() => setDistribution('1x3')}
+              >
+                1x3
+              </Button>
+              <Button
+                color={_distribution === '2x3' && 'secondary'}
+                onClick={() => setDistribution('2x3')}
+              >
+                2x3
+              </Button>
+            </ButtonGroup>
+            <Spacer />
             <Button
-              color={_distribution === '1x2' && 'secondary'}
-              onClick={() => setDistribution('1x2')}
+              disableElevation
+              size="small"
+              variant="contained"
+              onClick={handleSwap}
+              startIcon={<SwapHoriz />}
             >
-              1x2
+              Swap
             </Button>
-            <Button
-              color={_distribution === '1x3' && 'secondary'}
-              onClick={() => setDistribution('1x3')}
-            >
-              1x3
-            </Button>
-            <Button
-              color={_distribution === '2x3' && 'secondary'}
-              onClick={() => setDistribution('2x3')}
-            >
-              2x3
-            </Button>
-          </ButtonGroup>
+          </>
         )}
       </Toolbar>
       <RowContent distribution={_distribution}>
