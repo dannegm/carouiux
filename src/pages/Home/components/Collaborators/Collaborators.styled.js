@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { transparentTiles } from '@/utils/theme/helpers';
+/*import { transparentTiles } from '@/utils/theme/helpers';*/
 
 export const CollaboratorsWrapper = styled.section`
   margin-bottom: 8rem;
@@ -23,8 +23,7 @@ export const CollaboratorsItem = styled.a`
   width: calc(30% - 2rem);
   margin: 1rem;
   height: 15rem;
-  outline: 1px dashed #888;
-  ${transparentTiles}
+  outline: 0px none ;
 `;
 
 export const CollaboratorsItemPicture = styled.img`
