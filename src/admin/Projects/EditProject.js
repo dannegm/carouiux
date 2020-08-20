@@ -32,9 +32,11 @@ import {
 } from './Projects.styled';
 
 import DropZone from './../components/DropZone';
+import TextEditor from './../components/TextEditor';
 
 import validator, { noEmptyString } from '@/utils/helpers/validator';
 
+const initialCaseStudyRowId = uuid();
 const INITIAL_PROJECT = {
   uid: null,
   title: '',
@@ -45,6 +47,22 @@ const INITIAL_PROJECT = {
   description: '',
   callToActionLabel: '',
   showInHome: false,
+  caseStudy: [
+    {
+      uid: initialCaseStudyRowId,
+      distribution: '1x2',
+      content: [
+        {
+          type: 'text',
+          content: '',
+        },
+        {
+          type: 'image',
+          content: '',
+        },
+      ],
+    },
+  ],
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -68,18 +86,21 @@ const EditProject = () => {
     INITIAL_PROJECT
   );
   const [projectModel, setProjectModel] = useState(INITIAL_PROJECT);
+  const [isLoading, setLoading] = useState(true);
 
   const fetchProject = async (projectID) => {
     const projectSnapshop = await db
       .collection('projects')
       .doc(projectID)
       .get();
+
     if (!projectSnapshop.exists) {
       history.push('/secret/projects');
     }
 
     setOriginalProjectModel(projectSnapshop.data());
     setProjectModel(projectSnapshop.data());
+    setLoading(false);
   };
 
   const updateField = (field, value) => {
@@ -312,6 +333,13 @@ const EditProject = () => {
           </CardContent>
         </Collapse>
       </Card>
+      {!isLoading && (
+        <TextEditor
+          data={projectModel.caseStudy}
+          onChange={(value) => updateField('caseStudy', value)}
+          requestSave={handleSave}
+        />
+      )}
     </Wrapper>
   );
 };

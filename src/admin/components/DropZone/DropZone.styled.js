@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { rgba } from 'polished';
+import { transparentTiles } from '@/utils/theme/helpers';
 
 const accentColor = '#7D3F88';
 const elevation =
@@ -8,8 +9,8 @@ const elevation =
 export const DropZonePicture = styled.img`
   width: 100%;
   height: 302px;
-  object-fit: cover;
-  background-color: rgba(0 0 0 / 0.2);
+  object-fit: contain;
+  ${transparentTiles}
 `;
 
 export const DropZoneMessage = styled.div`

@@ -38,6 +38,10 @@ module.exports = {
         use: ['html-loader'],
       },
       {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader', 'resolve-url-loader'],
+      },
+      {
         test: /\.(jpe?g|gif|png|svg)$/i,
         include: [path.resolve(__dirname, './../src/assets/images')],
         use: [

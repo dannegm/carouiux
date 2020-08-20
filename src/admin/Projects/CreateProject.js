@@ -31,12 +31,14 @@ import {
 } from './Projects.styled';
 
 import DropZone from './../components/DropZone';
+import TextEditor from './../components/TextEditor';
 
 import validator, { noEmptyString } from '@/utils/helpers/validator';
 import { useHistory } from 'react-router-dom';
 
+const initialCaseStudyRowId = uuid();
 const INITIAL_PROJECT = {
-  uid: null,
+  uid: uuid(),
   title: '',
   previewText: '',
   cover: '',
@@ -45,6 +47,22 @@ const INITIAL_PROJECT = {
   description: '',
   callToActionLabel: 'View case study',
   showInHome: true,
+  caseStudy: [
+    {
+      uid: initialCaseStudyRowId,
+      distribution: '1x2',
+      content: [
+        {
+          type: 'text',
+          content: '',
+        },
+        {
+          type: 'image',
+          content: '',
+        },
+      ],
+    },
+  ],
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -299,6 +317,11 @@ const CreateProject = () => {
           </CardContent>
         </Collapse>
       </Card>
+      <TextEditor
+        data={projectModel.caseStudy}
+        onChange={(value) => updateField('caseStudy', value)}
+        requestSave={handleSave}
+      />
     </Wrapper>
   );
 };
