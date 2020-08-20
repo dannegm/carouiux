@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory, useParams } from 'react-router-dom';
 import { db } from '@/services/firebase';
 
@@ -10,6 +11,14 @@ import {
   // breakline
   PageWrapper,
   ProjectWrapper,
+  Title,
+  Table,
+  TableRow,
+  TableTitle,
+  TableContent,
+  MediumContent,
+  MediumRow,
+  MediumColumn,
 } from './Project.styled';
 
 const INITIAL_PROJECT = {
@@ -18,6 +27,19 @@ const INITIAL_PROJECT = {
   role: '',
   description: '',
   caseStudy: [],
+};
+
+const HtmlContent = ({ children }) => {
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: children,
+      }}
+    ></div>
+  );
+};
+HtmlContent.propTypes = {
+  children: PropTypes.string.isRequired,
 };
 
 const Project = () => {
@@ -52,7 +74,36 @@ const Project = () => {
       {!isLoading && (
         <Centered>
           <ProjectWrapper>
-            <h1>{projectModel.title}</h1>
+            <Title>{projectModel.title}</Title>
+
+            <Table>
+              <TableRow>
+                <TableTitle>Project:</TableTitle>
+                <TableContent>{projectModel.project}</TableContent>
+              </TableRow>
+              <TableRow>
+                <TableTitle>Role:</TableTitle>
+                <TableContent>{projectModel.role}</TableContent>
+              </TableRow>
+              <TableRow>
+                <TableTitle>Description:</TableTitle>
+                <TableContent>{projectModel.description}</TableContent>
+              </TableRow>
+            </Table>
+
+            <MediumContent>
+              {projectModel.caseStudy.map((row) => (
+                <MediumRow key={row.uid} distribution={row.distribution}>
+                  <MediumColumn>
+                    {row.content[0].type === 'text' ? (
+                      <HtmlContent>{row.content[0].content}</HtmlContent>
+                    ) : (
+                      <img src={row.content[0].content} />
+                    )}
+                  </MediumColumn>
+                </MediumRow>
+              ))}
+            </MediumContent>
           </ProjectWrapper>
         </Centered>
       )}
