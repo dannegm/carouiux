@@ -40,6 +40,7 @@ const initialCaseStudyRowId = uuid();
 const INITIAL_PROJECT = {
   uid: null,
   title: '',
+  slug: '',
   previewText: '',
   cover: '',
   project: '',

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { useSnackbar } from 'notistack';
+import slug from 'slug';
 import clsx from 'clsx';
 
 import { db } from '@/services/firebase';
@@ -40,6 +41,7 @@ const initialCaseStudyRowId = uuid();
 const INITIAL_PROJECT = {
   uid: uuid(),
   title: '',
+  slug: '',
   previewText: '',
   cover: '',
   project: '',
@@ -126,9 +128,18 @@ const CreateProject = () => {
   const handleSave = async () => {
     if (isValid) {
       try {
-        await db.collection('projects').doc(projectModel.uid).set(projectModel);
+        const projectToSave = {
+          ...projectModel,
+          slug: slug(projectModel.title),
+        };
+
+        await db
+          .collection('projects')
+          .doc(projectToSave.uid)
+          .set(projectToSave);
+
         enqueueSnackbar('The project has been created', { variant: 'success' });
-        history.push(`/secret/projects/edit/${projectModel.uid}`);
+        history.push(`/secret/projects/edit/${projectToSave.uid}`);
       } catch (e) {
         enqueueSnackbar('Something went wrong', { variant: 'error' });
         console.error(e);

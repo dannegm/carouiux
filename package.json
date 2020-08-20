@@ -34,6 +34,7 @@
     "react-protected-mailto": "^1.0.3",
     "react-router-dom": "^5.2.0",
     "react-router-scroll": "^0.4.4",
+    "slug": "^3.3.4",
     "styled-components": "^5.1.1",
     "styled-normalize": "^8.0.7",
     "typewriter-effect": "^2.13.1",

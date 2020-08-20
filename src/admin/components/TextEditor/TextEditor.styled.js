@@ -30,7 +30,6 @@ export const ColContent = styled.div`
 `;
 
 export const ActionsWrapper = styled.div`
-  margin-top: 1rem;
   display: flex;
 `;
 
@@ -63,6 +62,7 @@ export const RowWrapper = styled.div`
   border: 1px solid #eee;
   padding: 0.5rem;
   border-radius: 4px;
+  margin-bottom: 1rem;
 
   & ${ColWrapper} + ${ColWrapper} {
     margin-left: 0.5rem;
