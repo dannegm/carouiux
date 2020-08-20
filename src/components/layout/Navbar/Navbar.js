@@ -18,17 +18,17 @@ const Navbar = () => {
       <Centered>
         <NavContainer>
           <NavBrand>
-            <NavBrandLink to="#">Carolina Sánchez Guzmán</NavBrandLink>
+            <NavBrandLink to="/">Carolina Sánchez Guzmán</NavBrandLink>
           </NavBrand>
           <NavMenu>
             <NavMenuItem>
-              <NavMenuLink to="#skills">Skills</NavMenuLink>
+              <NavMenuLink to="/#skills">Skills</NavMenuLink>
             </NavMenuItem>
             <NavMenuItem>
-              <NavMenuLink to="#projects">Projects</NavMenuLink>
+              <NavMenuLink to="/#projects">Projects</NavMenuLink>
             </NavMenuItem>
             <NavMenuItem>
-              <NavMenuLink to="#about">About</NavMenuLink>
+              <NavMenuLink to="/#about">About</NavMenuLink>
             </NavMenuItem>
           </NavMenu>
         </NavContainer>
