@@ -22,7 +22,7 @@ export const CollaboratorsItem = styled.a`
   align-items: center;
   width: calc(30% - 2rem);
   margin: 1rem;
-  height: 15rem
+  height: 15rem;
 `;
 
 export const CollaboratorsItemPicture = styled.img`
