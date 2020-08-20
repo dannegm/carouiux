@@ -28,7 +28,7 @@ const Navbar = () => {
               <NavMenuLink to="/#projects">Projects</NavMenuLink>
             </NavMenuItem>
             <NavMenuItem>
-              <NavMenuLink to="/#about">About</NavMenuLink>
+              <NavMenuLink to="/about">About</NavMenuLink>
             </NavMenuItem>
           </NavMenu>
         </NavContainer>

@@ -6,6 +6,9 @@ const Home = lazy(() =>
 const Project = lazy(() =>
   import(/* webpackChunkName: "page_Project" */ '@/pages/Project')
 );
+const About = lazy(() =>
+  import(/* webpackChunkName: "page_About" */ '@/pages/About')
+);
 const Admin = lazy(() =>
   import(/* webpackChunkName: "admin_Root" */ '@/admin/Admin')
 );
@@ -23,6 +26,12 @@ export default [
     name: 'project',
     path: '/project/:slug',
     component: Project,
+    exact,
+  },
+  {
+    name: 'about',
+    path: '/about',
+    component: About,
     exact,
   },
   {

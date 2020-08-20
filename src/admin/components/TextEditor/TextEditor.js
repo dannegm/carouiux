@@ -222,14 +222,14 @@ RowSection.propTypes = {
   onChange: PropTypes.func,
 };
 RowSection.defaultProps = {
-  distribution: '1x2',
+  distribution: '1x',
   content: [
     {
       type: 'text',
       content: '',
     },
     {
-      type: 'image',
+      type: 'text',
       content: '',
     },
   ],
@@ -240,14 +240,14 @@ const TextEditor = ({ data, onChange, requestSave }) => {
   const [content, setContent] = useState(data);
 
   const defaultRow = {
-    distribution: '1x2',
+    distribution: '1x',
     content: [
       {
         type: 'text',
         content: '',
       },
       {
-        type: 'image',
+        type: 'text',
         content: '',
       },
     ],
@@ -322,14 +322,14 @@ TextEditor.defaultProps = {
   data: [
     {
       uid: defaultRowId,
-      distribution: '1x2',
+      distribution: '1x',
       content: [
         {
           type: 'text',
           content: '',
         },
         {
-          type: 'image',
+          type: 'text',
           content: '',
         },
       ],

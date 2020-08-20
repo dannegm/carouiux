@@ -52,14 +52,14 @@ const INITIAL_PROJECT = {
   caseStudy: [
     {
       uid: initialCaseStudyRowId,
-      distribution: '1x2',
+      distribution: '1x',
       content: [
         {
           type: 'text',
           content: '',
         },
         {
-          type: 'image',
+          type: 'text',
           content: '',
         },
       ],
