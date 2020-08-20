@@ -27,7 +27,7 @@ export const CollaboratorsItem = styled.a`
 
 export const CollaboratorsItemPicture = styled.img`
   display: block;
-  height: 60%;
   width: 100%;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
 `;
