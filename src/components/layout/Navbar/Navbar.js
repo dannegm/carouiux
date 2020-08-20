@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Centered } from '../helpers';
 
@@ -10,9 +11,10 @@ import {
   NavMenu,
   NavMenuItem,
   NavMenuLink,
+  NavMenuButton,
 } from './Navbar.styled';
 
-const Navbar = () => {
+const Navbar = ({ onSkillsClick, onProjectsClick }) => {
   return (
     <NavWrapper>
       <Centered>
@@ -22,10 +24,10 @@ const Navbar = () => {
           </NavBrand>
           <NavMenu>
             <NavMenuItem>
-              <NavMenuLink to="/#skills">Skills</NavMenuLink>
+              <NavMenuButton onClick={onSkillsClick}>Skills</NavMenuButton>
             </NavMenuItem>
             <NavMenuItem>
-              <NavMenuLink to="/#projects">Projects</NavMenuLink>
+              <NavMenuButton onClick={onProjectsClick}>Projects</NavMenuButton>
             </NavMenuItem>
             <NavMenuItem>
               <NavMenuLink to="/about">About</NavMenuLink>
@@ -35,6 +37,14 @@ const Navbar = () => {
       </Centered>
     </NavWrapper>
   );
+};
+Navbar.propTypes = {
+  onSkillsClick: PropTypes.func,
+  onProjectsClick: PropTypes.func,
+};
+Navbar.defaultProps = {
+  onSkillsClick: () => null,
+  onProjectsClick: () => null,
 };
 
 export default Navbar;

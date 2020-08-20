@@ -32,3 +32,8 @@ export const NavMenuLink = styled(NavLink)`
   font-size: 1.563rem;
   color: #050038;
 `;
+
+export const NavMenuButton = styled.a`
+  font-size: 1.563rem;
+  color: #050038;
+`;
