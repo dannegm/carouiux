@@ -37,13 +37,16 @@ const Projects = () => {
         </ProjectsDescription>
 
         {projectsData.map((project) => (
-          <ProjectItem
-            key={project.uid}
-            cover={project.cover}
-            title={project.title}
-            description={project.previewText}
-            callToActionLabel={project.callToActionLabel}
-          />
+          <>
+            <ProjectItem
+              key={project.uid}
+              cover={project.cover}
+              title={project.title}
+              slug={project.slug}
+              description={project.previewText}
+              callToActionLabel={project.callToActionLabel}
+            />
+          </>
         ))}
       </Centered>
     </ProjectsWrapper>

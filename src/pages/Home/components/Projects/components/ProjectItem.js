@@ -13,7 +13,13 @@ import {
   ProjectItemCallToAction,
 } from './ProjectItem.styled';
 
-const ProjectItem = ({ cover, title, description, callToActionLabel }) => {
+const ProjectItem = ({
+  cover,
+  title,
+  slug,
+  description,
+  callToActionLabel,
+}) => {
   return (
     <ProjectItemWrapper>
       <Centered>
@@ -22,7 +28,7 @@ const ProjectItem = ({ cover, title, description, callToActionLabel }) => {
           <ProjectItemCard>
             <ProjectItemTitle>{title}</ProjectItemTitle>
             <ProjectItemDescription>{description}</ProjectItemDescription>
-            <ProjectItemCallToAction>
+            <ProjectItemCallToAction href={`/project/${slug}`}>
               {callToActionLabel}
             </ProjectItemCallToAction>
           </ProjectItemCard>
@@ -35,6 +41,7 @@ const ProjectItem = ({ cover, title, description, callToActionLabel }) => {
 ProjectItem.propTypes = {
   cover: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   callToActionLabel: PropTypes.string,
 };

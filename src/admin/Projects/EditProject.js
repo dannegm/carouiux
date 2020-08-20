@@ -22,7 +22,7 @@ import {
   makeStyles,
 } from '@material-ui/core';
 
-import { Save, DeleteSweep, ExpandMore } from '@material-ui/icons';
+import { Save, OpenInNew, DeleteSweep, ExpandMore } from '@material-ui/icons';
 
 import {
   Wrapper,
@@ -186,6 +186,14 @@ const EditProject = () => {
                 onClick={resetProject}
               >
                 Reset Changes
+              </CardHeaderButton>
+              <CardHeaderButton
+                variant="contained"
+                endIcon={<OpenInNew />}
+                target="_blank"
+                href={`/project/${projectModel.slug}`}
+              >
+                Open Page
               </CardHeaderButton>
               <CardHeaderButton
                 variant="contained"

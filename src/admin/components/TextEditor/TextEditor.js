@@ -135,10 +135,10 @@ const RowSection = ({ content, distribution, onChange }) => {
 
   useEffect(() => {
     onChange({
-      distribution,
+      distribution: _distribution,
       content: _content,
     });
-  }, _content);
+  }, [_distribution, _content]);
 
   return (
     <RowWrapper>

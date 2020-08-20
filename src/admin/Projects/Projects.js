@@ -8,11 +8,8 @@ import {
   Link,
   CardHeader as MuiCardHeader,
   CardMedia,
-  CardContent,
   CardActions,
-  IconButton,
   Button,
-  Typography,
 } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 
@@ -22,8 +19,6 @@ import {
   CardHeaderButton,
   Breadcrumbs,
 } from './Projects.styled';
-
-import { Delete } from '@material-ui/icons';
 
 const Projects = () => {
   const [projectsData, setProjectsData] = useState([]);
@@ -76,6 +71,13 @@ const Projects = () => {
                   href={`/secret/projects/edit/${project.uid}`}
                 >
                   Edit
+                </Button>
+                <Button
+                  color="primary"
+                  target="_blank"
+                  href={`/project/${project.slug}`}
+                >
+                  Open Page
                 </Button>
               </CardActions>
             </Card>
