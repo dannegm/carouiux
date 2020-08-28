@@ -21,6 +21,7 @@
     "config": "^3.3.1",
     "dotenv": "^8.2.0",
     "firebase": "^7.18.0",
+    "md5": "^2.3.0",
     "notistack": "^0.9.17",
     "polished": "^3.6.5",
     "prop-types": "^15.7.2",

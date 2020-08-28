@@ -31,7 +31,7 @@ import 'medium-editor/dist/css/themes/default.css';
 
 import DropZone from '../DropZone';
 
-const ContentEditor = ({ type, content, onChange }) => {
+const ContentEditor = ({ type, content, storageFolder, onChange }) => {
   const [_type, setType] = useState(type);
   const [_content, setContent] = useState(content);
 
@@ -88,7 +88,7 @@ const ContentEditor = ({ type, content, onChange }) => {
         ) : (
           <ImageWrapper>
             <DropZone
-              folder="test"
+              folder={`projects`}
               picture={_content}
               onSuccess={handleChange}
             />
@@ -101,15 +101,17 @@ const ContentEditor = ({ type, content, onChange }) => {
 ContentEditor.propTypes = {
   type: PropTypes.oneOf(['text', 'image']),
   content: PropTypes.string,
+  storageFolder: PropTypes.string,
   onChange: PropTypes.func,
 };
 ContentEditor.defaultProps = {
   type: 'text',
   content: '',
+  storageFolder: 'default',
   onChange: () => null,
 };
 
-const RowSection = ({ content, distribution, onChange }) => {
+const RowSection = ({ content, distribution, storageFolder, onChange }) => {
   const [_distribution, setDistribution] = useState(distribution);
   const [isSingleColumn, setIsSingleColumn] = useState(false);
 
@@ -203,12 +205,14 @@ const RowSection = ({ content, distribution, onChange }) => {
         <ContentEditor
           type={_content[0].type}
           content={_content[0].content}
+          storageFolder={storageFolder}
           onChange={(value) => setContent([value, _content[1]])}
         />
         {!isSingleColumn && (
           <ContentEditor
             type={_content[1].type}
             content={_content[1].content}
+            storageFolder={storageFolder}
             onChange={(value) => setContent([_content[0], value])}
           />
         )}
@@ -218,11 +222,13 @@ const RowSection = ({ content, distribution, onChange }) => {
 };
 RowSection.propTypes = {
   distribution: PropTypes.oneOf(['1x', '1x2', '1x3', '2x3']),
+  storageFolder: PropTypes.string,
   content: PropTypes.any,
   onChange: PropTypes.func,
 };
 RowSection.defaultProps = {
   distribution: '1x',
+  storageFolder: 'default',
   content: [
     {
       type: 'text',
@@ -236,7 +242,7 @@ RowSection.defaultProps = {
   onChange: () => null,
 };
 
-const TextEditor = ({ data, onChange, requestSave }) => {
+const TextEditor = ({ data, storageFolder, onChange, requestSave }) => {
   const [content, setContent] = useState(data);
 
   const defaultRow = {
@@ -280,6 +286,7 @@ const TextEditor = ({ data, onChange, requestSave }) => {
             <RowSection
               key={row.uid}
               distribution={row.distribution}
+              storageFolder={storageFolder}
               content={row.content}
               onChange={(value) => handleContent(value, index)}
             />
@@ -313,12 +320,14 @@ const TextEditor = ({ data, onChange, requestSave }) => {
 };
 TextEditor.propTypes = {
   data: PropTypes.any,
+  storageFolder: PropTypes.string,
   onChange: PropTypes.func,
   requestSave: PropTypes.func,
 };
 
 const defaultRowId = uuid();
 TextEditor.defaultProps = {
+  storageFolder: 'default',
   data: [
     {
       uid: defaultRowId,

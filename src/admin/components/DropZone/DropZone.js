@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import md5 from 'md5';
 
 import { storage } from '@/services/firebase';
 
@@ -17,6 +18,11 @@ import {
 } from './DropZone.styled';
 
 const allowedTypes = 'image/png, image/jpeg';
+
+const getExtension = (fileName) => {
+  const parts = fileName.split('.');
+  return parts[parts.length - 1];
+};
 
 const DropZone = ({ picture, folder, error, onSuccess, onError }) => {
   const dropZone = useRef();
@@ -69,7 +75,9 @@ const DropZone = ({ picture, folder, error, onSuccess, onError }) => {
   };
 
   const handleUpload = (file) => {
-    $pictureRef = $storage.child(`${folder}/${file.name}`);
+    const filename = `${md5(file.arrayBuffer())}.${getExtension(file.name)}`;
+
+    $pictureRef = $storage.child(`${folder}/${filename}`);
     const uploaderTask = $pictureRef.put(file);
     uploaderTask.on(
       'state_changed',

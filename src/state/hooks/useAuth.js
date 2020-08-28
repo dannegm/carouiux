@@ -18,6 +18,7 @@ const useAuth = () => {
   const [hasSession, setSession] = useState(false);
 
   auth.onAuthStateChanged(async (authUser) => {
+    console.log(authUser);
     if (authUser) {
       setUser(authUser);
       const usersSnapshot = await db
