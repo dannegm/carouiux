@@ -24,6 +24,12 @@ const getExtension = (fileName) => {
   return parts[parts.length - 1];
 };
 
+const getMd5 = async (file) => {
+  const arrayBuffer = await file.arrayBuffer();
+  const buffer = new Uint8Array(arrayBuffer);
+  return md5(buffer);
+};
+
 const DropZone = ({ picture, folder, error, onSuccess, onError }) => {
   const dropZone = useRef();
   const filePicker = useRef();
@@ -74,8 +80,9 @@ const DropZone = ({ picture, folder, error, onSuccess, onError }) => {
     });
   };
 
-  const handleUpload = (file) => {
-    const filename = `${md5(file.arrayBuffer())}.${getExtension(file.name)}`;
+  const handleUpload = async (file) => {
+    const fileMd5 = await getMd5(file);
+    const filename = `${fileMd5}.${getExtension(file.name)}`;
 
     $pictureRef = $storage.child(`${folder}/${filename}`);
     const uploaderTask = $pictureRef.put(file);
