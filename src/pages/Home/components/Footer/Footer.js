@@ -36,8 +36,8 @@ const Footer = () => {
     {
       key: 'contact.phone',
       label: 'Phone',
-      display: '+52 449 919 4140',
-      href: 'tel:+524499194140',
+      display: '+52 333 718 1739',
+      href: 'tel:+523337181739',
     },
   ];
 
