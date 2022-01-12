@@ -20,6 +20,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v1
 
+      - name: Install dependencies
+        run: |
+            npm install -g yarn
+            yarn install
+
       # Runs a single command using the runners shell
       - name: Build
         env:
@@ -32,8 +37,8 @@ jobs:
           FIREBASE_APP_ID: ${{secrets.FIREBASE_APP_ID}}
           FIREBASE_MEASUREMENT_ID: ${{secrets.FIREBASE_MEASUREMENT_ID}}
         run: |
-          npm install
-          npm run build
+            yarn install
+            yarn build
       # Delpoy into my Firebase container
       - name: Firebase Deploy
         run: |
