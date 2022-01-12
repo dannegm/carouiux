@@ -74,16 +74,5 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
-  "repository": "git@github.com:dannegm/carouiux.git",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.+js": [
-      "npm run prettier:fix",
-      "npm run lint"
-    ]
-  }
+  "repository": "git@github.com:dannegm/carouiux.git"
 }
