@@ -68,13 +68,18 @@ const Project = () => {
         setLoading(false);
     };
 
+    const redirectTo = (target) => history.push(target);
+
     useEffect(() => {
         fetchProject(slug);
     }, [slug]);
 
     return (
         <PageWrapper>
-            <Navbar />
+            <Navbar
+                onSkillsClick={() => redirectTo('/#skills')}
+                onProjectsClick={() => redirectTo('/#projects')}
+            />
             {!isLoading && (
                 <Centered>
                     <ProjectWrapper>
