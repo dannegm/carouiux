@@ -7,10 +7,15 @@ service cloud.firestore {
      	let user = get(/databases/$(database)/documents/users/$(uid));
       return existUser && user.data.isAdmin;
     }
-    
-    match /{document=**} {
+
+    match /projects/{document=**} {
       allow read;
       allow write: if isAdmin();
+    }
+
+    match /users/{document=**} {
+      allow read;
+      allow write: if false;
     }
   }
 }
