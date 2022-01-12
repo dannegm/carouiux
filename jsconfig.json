@@ -1,9 +1,16 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"]
-    }
-  },
-  "exclude": ["**/build", "**/node_modules", "**/public"]
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@admin/*": ["./src/admin/*"],
+            "@assets/*": ["./src/assets/*"],
+            "@components/*": ["./src/components/*"],
+            "@pages/*": ["./src/pages/*"],
+            "@services/*": ["./src/services/*"],
+            "@state/*": ["./src/state/*"],
+            "@utils/*": ["./src/utils/*"],
+            "@/*": ["./src/*"]
+        }
+    },
+    "exclude": ["node_modules", "public", "build"]
 }

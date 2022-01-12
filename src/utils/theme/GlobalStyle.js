@@ -1,10 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-import {
-  BwNistaGeometricDEMORgular,
-  BwNistaGeometricDEMOExtraBold,
-} from './fontFaces';
+import { BwNistaGeometricDEMORgular, BwNistaGeometricDEMOExtraBold } from './fontFaces';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}

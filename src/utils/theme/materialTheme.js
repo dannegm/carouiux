@@ -1,22 +1,21 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const fontFamily =
-  '"Bw Nista Geometric DEMO", "Helvetica", "Arial", sans-serif';
+const fontFamily = '"Bw Nista Geometric DEMO", "Helvetica", "Arial", sans-serif';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#616161',
-      main: '#212121',
-      dark: '#171717',
-      contrastText: '#FFFFFF',
+const theme = createTheme({
+    palette: {
+        primary: {
+            light: '#616161',
+            main: '#212121',
+            dark: '#171717',
+            contrastText: '#FFFFFF',
+        },
     },
-  },
-  typography: {
-    fontFamily,
-    htmlFontSize: 16,
-    fontSize: 14,
-  },
+    typography: {
+        fontFamily,
+        htmlFontSize: 16,
+        fontSize: 14,
+    },
 });
 
 export default theme;
